@@ -18,3 +18,5 @@ document.getElementById("clickity").addEventListener("click", function() {
   test2Text.textContent = i;
 }
 
+  const titleText = document.getElementById("title"); 
+  titleText.textContent = "the title has changed"; 
