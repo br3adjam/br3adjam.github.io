@@ -20,3 +20,4 @@ document.getElementById("clickity").addEventListener("click", function() {
 
   const titleText = document.getElementById("title"); 
   titleText.textContent = "the title has changed"; 
+ document.getElementById("title")="title please change"; 
