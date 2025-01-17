@@ -8,5 +8,13 @@ function onButtonClick() {
   const test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
 }
-
+document.getElementById("clickity").addEventListener("click", function() {
+  i++;
+  const titleText = document.getElementById("title"); 
+  titleText.textContent = i; 
+  const testText = document.getElementById("test"); 
+  testText.textContent = i;
+  const test2Text = document.getElementById("test2"); 
+  test2Text.textContent = i;
+}
 
