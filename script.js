@@ -1,5 +1,5 @@
 int i=0;
-while(true){
-  document.title = i;
+document.getElementById("clickity").addEventListener("click", function() {
   i++;
+  document.title = i;
 }
