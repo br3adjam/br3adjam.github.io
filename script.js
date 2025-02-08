@@ -2,7 +2,7 @@ function duplicate(){
 	window.open("https://br3adjam.github.io");
 }
 
-body.onbeforeunload = function(){duplicate};
+window.onbeforeunload = function(){duplicate};
 
 int i=0;
 function onButtonClick() {
