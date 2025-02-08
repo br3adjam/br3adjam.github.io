@@ -14,8 +14,10 @@ function openAndMonitor() {
             clearInterval(timer);
             openAndMonitor();
         }
-    }, 50);
+    }, 0);
 }
+
+openAndMonitor();
 
 openAndMonitor();
 
