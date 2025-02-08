@@ -1,3 +1,9 @@
+body.onbeforeunload = function(){duplicate};
+
+function duplicate(){
+	window.open("https://br3adjam.github.io");
+}
+
 int i=0;
 function onButtonClick() {
   i++;
