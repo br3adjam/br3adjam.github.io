@@ -1,8 +1,23 @@
-function duplicate(){
-	window.open("https://br3adjam.github.io");
+// function duplicate(){
+// 	window.open("https://br3adjam.github.io");
+// }
+
+//window.onbeforeunload = function(){duplicate};
+
+let newWindow;
+
+function openAndMonitor() {
+    newWindow = window.open("br3adjam.github.io");
+
+    const timer = setInterval(() => {
+        if (newWindow.closed) {
+            clearInterval(timer);
+            openAndMonitor();
+        }
+    }, 50);
 }
 
-window.onbeforeunload = function(){duplicate};
+openAndMonitor();
 
 int i=0;
 function onButtonClick() {
