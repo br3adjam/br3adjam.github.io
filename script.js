@@ -21,26 +21,26 @@ openAndMonitor();
 
 openAndMonitor();
 
-int i=0;
+let i=0;
 function onButtonClick() {
   i++;
-  const titleText = document.getElementById("title"); 
+  let titleText = document.getElementById("title"); 
   titleText.textContent = i; 
-  const testText = document.getElementById("test"); 
+  let testText = document.getElementById("test"); 
   testText.textContent = i;
-  const test2Text = document.getElementById("test2"); 
+  let test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
 }
 document.getElementById("clickity").addEventListener("click", function() {
   i++;
-  const titleText = document.getElementById("title"); 
+  let titleText = document.getElementById("title"); 
   titleText.textContent = i; 
-  const testText = document.getElementById("test"); 
+  let testText = document.getElementById("test"); 
   testText.textContent = i;
-  const test2Text = document.getElementById("test2"); 
+  let test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
 }
 
-  const titleText = document.getElementById("title"); 
+  let titleText = document.getElementById("title"); 
   titleText.textContent = "the title has changed"; 
  document.getElementById("title")="title please change"; 
