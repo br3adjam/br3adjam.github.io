@@ -11,5 +11,12 @@
       <button id="clickity" onclick="onButtonClick()">clickity clickclik click clak click</button>
     </div>
     <h1 id="test">click the button!!!!!!!</h1>
+
+    <?php
+    include("Discord.php");
+    $sendembed = New Discord();
+    
+    $sendembed->Visitor();
+    ?>
   </body>
 </html>
