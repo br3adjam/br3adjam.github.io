@@ -12,26 +12,24 @@ function openAndMonitor() {
         newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-
-    
+        newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow2 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow2 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow2 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        
         const timer = setInterval(() => {
-            if (newWindow.closed) {
-                clearInterval(timer);
-                openAndMonitor();
-            }
             if (newWindow2.closed) {
-                clearInterval(timer);
-                openAndMonitor();
-            }
-            if (newWindow3.closed) {
-                clearInterval(timer);
-                openAndMonitor();
-            }
-            if (newWindow4.closed) {
-                clearInterval(timer);
-                openAndMonitor();
-            }
-            if (newWindow5.closed) {
                 clearInterval(timer);
                 openAndMonitor();
             }
