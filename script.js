@@ -84,7 +84,7 @@ function go() {
     if(i>11){
       fakeAlert(countdown);
       countdown--;
-      if(countdown<=0){
+      if(countdown<0){
         window.close();
       }
     }
