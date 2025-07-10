@@ -17,10 +17,6 @@ function openAndMonitor() {
     }, 0);
 }
 
-openAndMonitor();
-
-openAndMonitor();
-
 var i=0;
 function onButtonClick() {
   i++;
@@ -30,6 +26,7 @@ function onButtonClick() {
   testText.textContent = i;
   let test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
+    openAndMonitor();
 }
 document.getElementById("clickity").addEventListener("click", function() {
   i++;
@@ -37,9 +34,10 @@ document.getElementById("clickity").addEventListener("click", function() {
   titleText.textContent = i; 
   let testText = document.getElementById("test"); 
   testText.textContent = i;
-  let test2Text = document.getElementById("test2"); 
+  let test2Text = document.getElemen
+      openAndMonitor();tById("test2"); 
   test2Text.textContent = i;
-}
+})
 
   let titleText = document.getElementById("title"); 
   titleText.textContent = "the title has changed"; 
