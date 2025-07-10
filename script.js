@@ -67,7 +67,8 @@ var i=0;
 //  test2Text.textContent = i;
 //    openAndMonitor();
 //}
-document.getElementById("clickity").addEventListener("click", function() {
+// document.getElementById("clickity").addEventListener("click", function() {
+function onButtonClick(){
   function enterFullscreen() {
   const elem = document.documentElement; // Or any specific element like document.getElementById("myVideo")
 
