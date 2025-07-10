@@ -48,8 +48,10 @@ function go() {
    // enterFullscreen();
 
     i++;
+    if(i<10){
     const titleText = document.getElementById("title");
     titleText.textContent = "yip" + "e".repeat(i);  
+    }
     if(i==3){
         fakeAlert("you clicked too much");
     }
@@ -75,9 +77,18 @@ function go() {
         fakeAlert("meanie");
         selfDestruct();
     }
-    if(i>10){
-        fakeAlert("clicking more wont help");
+    if(i==11){
+        fakeAlert("that's it now 3:<");
     }
+    var countdown=10;
+    if(i>11){
+      fakeAlert(countdown);
+      countdown--;
+      if(countdown<=0){
+        window.close();
+      }
+    }
+
 
     const test2Text = document.getElementById("test2");
     test2Text.textContent = i;
