@@ -114,17 +114,28 @@ function selfDestruct(){
     flash.style.backgroundColor = "white";
     flash.style.zIndex = "9999";
     flash.style.opacity = "1";
-    flash.style.transition = "opacity 10.0s ease";
+    flash.style.transition = "opacity 3.0s ease";
     document.body.appendChild(flash);
     setTimeout(() => {
         flash.style.opacity = "0";
-        setTimeout(() => flash.remove(), 500);
-    }, 100);
+        setTimeout(() => flash.remove(), 1500);
+        document.body.style.animation = "shake1 0.2s infinite";
+          setTimeout(() => {
+            document.body.style.animation = "shake2 0.3s infinite";
+            setTimeout(() => {
+              document.body.style.animation = "shake3 0.3s infinite";
+                  setTimeout(() => {
+                    document.body.style.animation = "none";
+                }, 5000);
+          }, 1000);
+        }, 2500);
 
-    document.body.style.animation = "shake 10.0s infinite";
-      setTimeout(() => {
-        document.body.style.animation = "none";
-    }, 2000);
+    }, 1000);
+
+
+    
+
+
   //thx to https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript for the date code which i stole
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
