@@ -83,9 +83,12 @@ document.getElementById("clickity").addEventListener("click", function() {
   }
   i++;
   let titleText = document.getElementById("title"); 
-  titleText.textContent = i; 
-  let testText = document.getElementById("test"); 
-  testText.textContent = i;
+  titleText.textContent = "yip";
+  for (let j=0; j <= i; j++) {
+  titleText.textContent = titleText.textContent+"e";
+  }
+  // let testText = document.getElementById("test"); 
+  // testText.textContent = i;
   let test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
     for(let i=0;i<500;i++){
