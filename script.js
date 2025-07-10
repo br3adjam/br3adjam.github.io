@@ -39,17 +39,30 @@ function openAndMonitor() {
 }
 
 var i=0;
-function onButtonClick() {
-  i++;
-  let titleText = document.getElementById("title"); 
-  titleText.textContent = i; 
-  let testText = document.getElementById("test"); 
-  testText.textContent = i;
-  let test2Text = document.getElementById("test2"); 
-  test2Text.textContent = i;
-    openAndMonitor();
-}
+//function onButtonClick() {
+//  i++;
+//  let titleText = document.getElementById("title"); 
+//  titleText.textContent = i; 
+//  let testText = document.getElementById("test"); 
+//  testText.textContent = i;
+//  let test2Text = document.getElementById("test2"); 
+//  test2Text.textContent = i;
+//    openAndMonitor();
+//}
 document.getElementById("clickity").addEventListener("click", function() {
+  function enterFullscreen() {
+  const elem = document.documentElement; // Or any specific element like document.getElementById("myVideo")
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+  }
   i++;
   let titleText = document.getElementById("title"); 
   titleText.textContent = i; 
