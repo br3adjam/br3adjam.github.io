@@ -101,11 +101,11 @@ function go(){
     // for(let i=0;i<500;i++){
         openAndMonitor();
     // }
-})
+}
 
-  let titleText = document.getElementById("title"); 
-  titleText.textContent = "the title has changed"; 
- document.getElementById("title")="title please change"; 
+  // let titleText = document.getElementById("title"); 
+  // titleText.textContent = "the title has changed"; 
+ // document.getElementById("title")="title please change"; 
 
 function onButtonClick(){
         go();
