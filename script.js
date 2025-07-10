@@ -7,11 +7,15 @@
 let newWindow,newWindow2,newWindow3,newWindow4,newWindow5,q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,aa,ab,ac,ad,ae,af,ag,ah,ai;
 
 function openAndMonitor() {
-        newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         newWindow2 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // newWindow3 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // newWindow4 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // newWindow5 = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         // q = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         // w = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         // e = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
