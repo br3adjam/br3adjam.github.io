@@ -68,7 +68,9 @@ var i=0;
 //    openAndMonitor();
 //}
 // document.getElementById("clickity").addEventListener("click", function() {
-function onButtonClick(){
+
+
+function go(){
   function enterFullscreen() {
   const elem = document.documentElement; // Or any specific element like document.getElementById("myVideo")
 
@@ -100,3 +102,8 @@ function onButtonClick(){
   let titleText = document.getElementById("title"); 
   titleText.textContent = "the title has changed"; 
  document.getElementById("title")="title please change"; 
+
+function onButtonClick(){
+        go();
+}
+document.getElementById("clickity").addEventListener("click", function() {go();});
