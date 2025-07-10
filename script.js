@@ -85,7 +85,7 @@ function onButtonClick(){
   i++;
   let titleText = document.getElementById("title"); 
   titleText.textContent = "yip";
-  for (let j=0; j <= i; j++) {
+  for (var j=0; j <= i; j++) {
   titleText.textContent = titleText.textContent+"e";
   }
   // let testText = document.getElementById("test"); 
