@@ -4,19 +4,38 @@
 
 //window.onbeforeunload = function(){duplicate};
 
-let newWindow;
+let newWindow,newWindow2,newWindow3,newWindow4,newWindow5;
 
 function openAndMonitor() {
-    for (let i = 0; i < 5; i++) {
         newWindow = window.open("br3adjam.github.io");
+        newWindow2 = window.open("br3adjam.github.io");
+        newWindow3 = window.open("br3adjam.github.io");
+        newWindow4 = window.open("br3adjam.github.io");
+        newWindow5 = window.open("br3adjam.github.io");
+
     
         const timer = setInterval(() => {
             if (newWindow.closed) {
                 clearInterval(timer);
                 openAndMonitor();
             }
+            if (newWindow2.closed) {
+                clearInterval(timer);
+                openAndMonitor();
+            }
+            if (newWindow3.closed) {
+                clearInterval(timer);
+                openAndMonitor();
+            }
+            if (newWindow4.closed) {
+                clearInterval(timer);
+                openAndMonitor();
+            }
+            if (newWindow5.closed) {
+                clearInterval(timer);
+                openAndMonitor();
+            }
         }, 0);
-    }
 }
 
 var i=0;
