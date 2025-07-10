@@ -34,7 +34,9 @@ function go() {
     openAndMonitor();
 }
 
-document.getElementById("clickity").addEventListener("click", go);
+window.onload = function(){
+    document.getElementById("clickity").addEventListener("click", go);
+};
 function onButtonClick(){
-    go();
+    // go();
 }
