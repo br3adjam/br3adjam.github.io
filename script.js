@@ -1,5 +1,6 @@
 let newWindow2,a,b,c;
 let i = 0;
+let countdown=10;
 
 function fakeAlert(msg) {
   document.getElementById("alertText").textContent = msg;
@@ -80,7 +81,6 @@ function go() {
     if(i==11){
         fakeAlert("that's it now 3:<");
     }
-    var countdown=10;
     if(i>11){
       fakeAlert(countdown);
       countdown--;
@@ -135,7 +135,7 @@ function selfDestruct(){
   document.title = "rip page some day in late 2024-"+today;
     const testText = document.getElementById("test");
     testText.textContent = "*boooooom* ⋆·˚ ༘ *⚠️💣💥 o no";
-    test2Text.textContent="i hate you 3:<
+    test2Text.textContent="i hate you 3:<";
 
   
 }
