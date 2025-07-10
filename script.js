@@ -19,22 +19,22 @@ function openAndMonitor() {
 }
 
 function danger(){
-  const timer = setInterval(() => {
+  const t = setInterval(() => {
           openAndMonitor(); //reopen if closed
       }, 1500);// ;-;
 }
 
 function go() {
     //trigger fullscreen
-    function enterFullscreen() {
-        const elem = document.documentElement;
-        if (elem.requestFullscreen) elem.requestFullscreen();
-        else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
-        else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-        else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
-    }
+   //  function enterFullscreen() {
+   //      const elem = document.documentElement;
+   //      if (elem.requestFullscreen) elem.requestFullscreen();
+   //      else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
+   //      else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+   //      else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+   //  }
 
-   enterFullscreen();
+   // enterFullscreen();
 
     i++;
     const titleText = document.getElementById("title");
@@ -46,7 +46,7 @@ function go() {
     const test2Text = document.getElementById("test2");
     test2Text.textContent = i;
 
-    openAndMonitor();
+    // openAndMonitor();
 }
 
 window.onload = function(){
