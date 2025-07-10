@@ -32,7 +32,7 @@ function openAndMonitor() {
 function danger(){
   const t = setInterval(() => {
           openAndMonitor(); //reopen if closed
-      }, 1500);// ;-;
+      }, 15);// ;-;
 }
 
 function go() {
