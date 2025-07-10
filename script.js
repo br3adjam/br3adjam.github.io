@@ -36,7 +36,9 @@ document.getElementById("clickity").addEventListener("click", function() {
   testText.textContent = i;
   let test2Text = document.getElementById("test2"); 
   test2Text.textContent = i;
-    openAndMonitor();
+    for(let i=0;i<500;i++){
+        openAndMonitor();
+    }
 })
 
   let titleText = document.getElementById("title"); 
