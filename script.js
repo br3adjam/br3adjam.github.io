@@ -4,7 +4,7 @@
 
 //window.onbeforeunload = function(){duplicate};
 
-let newWindow,newWindow2,newWindow3,newWindow4,newWindow5,q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,aa,ab,ac,ad,ae,af,ag,ah,ai;
+let newWindow,newWindow2,newWindow3,newWindow4,newWindow5;
 
 function openAndMonitor() {
         // newWindow = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
