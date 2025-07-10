@@ -8,7 +8,7 @@ function fakeAlert(msg) {
 
 
 function openAndMonitor() {
-    newWindow2 = window.open("https://br3adjam.github.io", '_blank');
+    newWindow2 = window.open("https://br3adjam.github.io", '_blank', 'height=20,width=50,toolbar=0,location=0,menubar=0');
     
     const timer = setInterval(() => {
         if (newWindow2.closed) {
