@@ -37,16 +37,16 @@ function openAndMonitor() {
         v = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         b = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         n = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        m = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        aa = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ab = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ac = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ad = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ae = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        af = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ag = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ah = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
-        ai = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // m = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // aa = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ab = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ac = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ad = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ae = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // af = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ag = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ah = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
+        // ai = window.open("br3adjam.github.io",'_blank', 'fullscreen=yes,scrollbars=auto');
         
         const timer = setInterval(() => {
             if (newWindow2.closed) {
