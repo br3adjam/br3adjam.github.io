@@ -35,3 +35,6 @@ function go() {
 }
 
 document.getElementById("clickity").addEventListener("click", go);
+function onButtonClick(){
+    go();
+}
