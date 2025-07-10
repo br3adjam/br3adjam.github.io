@@ -132,7 +132,7 @@ function selfDestruct(){
     var yyyy = today.getFullYear();
     
     today = mm + '/' + dd + '/' + yyyy;
-  document.title = "rip page X/X/2025-"+today;
+  document.title = "rip page some day in late 2024-"+today;
     const test2 = document.getElementById("test2");
     test2.textContent = "*boooooom* ⋆·˚ ༘ *⚠️💣💥 o no";
 
