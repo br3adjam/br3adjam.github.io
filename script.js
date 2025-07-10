@@ -85,7 +85,8 @@ function go() {
       fakeAlert(countdown);
       countdown--;
       if(countdown<0){
-        window.close();
+        // window.close(); WONT WORK AHHHHH
+        window.location.replace("https://artofproblemsolving.com/community/c1595181");
       }
     }
 
