@@ -135,6 +135,7 @@ function selfDestruct(){
   document.title = "rip page some day in late 2024-"+today;
     const testText = document.getElementById("test");
     testText.textContent = "*boooooom* ⋆·˚ ༘ *⚠️💣💥 o no";
+    const test2Text = document.getElementById("test2");
     test2Text.textContent="i hate you 3:<";
 
   
