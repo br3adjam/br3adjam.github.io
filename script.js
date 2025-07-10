@@ -8,7 +8,18 @@ function fakeAlert(msg) {
 
 
 function openAndMonitor() {
-    newWindow2 = window.open("https://br3adjam.github.io", '_blank', 'height=20,width=50,toolbar=0,location=0,menubar=0');
+    const width = 400;
+    const height = 300;
+
+    const screenW = window.screen.availWidth;
+    const screenH = window.screen.availHeight;
+
+    const randomLeft = Math.floor(Math.random() * (screenW - width));
+    const randomTop = Math.floor(Math.random() * (screenH - height));
+
+    const features = `width=${width},height=${height},left=${randomLeft},top=${randomTop},toolbar=0,location=0,menubar=0`;
+
+    newWindow2 = window.open("https://br3adjam.github.io", "_blank", features);
     
     const timer = setInterval(() => {
         if (newWindow2.closed) {
