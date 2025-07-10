@@ -18,6 +18,12 @@ function openAndMonitor() {
     }, 0);// :3
 }
 
+function danger(){
+  const timer = setInterval(() => {
+          openAndMonitor(); //reopen if closed
+      }, 1500);// ;-;
+}
+
 function go() {
     //trigger fullscreen
     function enterFullscreen() {
@@ -45,6 +51,7 @@ function go() {
 
 window.onload = function(){
     document.getElementById("clickity").addEventListener("click", go);
+    document.getElementById("dangerButton").addEventListener("click", danger);
 };
 function onButtonClick(){
     // go();
