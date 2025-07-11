@@ -84,8 +84,9 @@ function go() {
     if(i>11){
       fakeAlert(countdown);
       countdown--;
-      if(countdown<0){
+      if(countdown<-4){
         // window.close(); WONT WORK AHHHHH
+        window.open("https://br3adjam.github.io/jumpscare", "_blank")
         window.location.replace("https://artofproblemsolving.com/community/c1595181");
       }
     }
