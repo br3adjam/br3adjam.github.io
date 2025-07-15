@@ -3,11 +3,13 @@ let i = 0;
 let countdown=10;
 
 function fakeAlert(msg) {
+  console.log("fake alert created! "+msg);
   document.getElementById("alertText").textContent = msg;
   document.getElementById("fakeAlert").style.display = "block";
 }
 
 function createAudio() {
+    console.log("audio created!");
     let x = document.createElement("audio src="meow.mp3" style="display:none;" autoplay");
 }
 
@@ -35,12 +37,14 @@ function openAndMonitor() {
 }
 
 function danger(){
+  console.log("danger button clicked!");
   const t = setInterval(() => {
           openAndMonitor(); //reopen if closed
       }, 15);// ;-;
 }
 
 function go() {
+  console.log("button clicked!");
     //trigger fullscreen
    //  function enterFullscreen() {
    //      const elem = document.documentElement;
@@ -51,9 +55,10 @@ function go() {
    //  }
 
    // enterFullscreen();
-
+    
     i++;
     if(i<10){
+      console.log("i<10,"+i);
     const titleText = document.getElementById("title");
     titleText.textContent = "yip" + "e".repeat(i);  
     }
@@ -106,6 +111,7 @@ function go() {
 }
 
 window.onload = function(){
+  console.log("clickEventListeners created!");
     document.getElementById("clickity").addEventListener("click", go);
     document.getElementById("dangerButton").addEventListener("click", danger);
 };
@@ -114,6 +120,7 @@ function onButtonClick(){
 }
 
 function selfDestruct(){
+  console.log("ded");
     const flash = document.createElement("div");
     flash.style.position = "fixed";
     flash.style.top = "0";
@@ -140,11 +147,6 @@ function selfDestruct(){
         }, 2500);
 
     }, 1000);
-
-
-    
-
-
   //thx to https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript for the date code which i stole
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
