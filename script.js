@@ -7,6 +7,10 @@ function fakeAlert(msg) {
   document.getElementById("fakeAlert").style.display = "block";
 }
 
+function createAudio() {
+    let x = document.createElement("audio src="meow.mp3" style="display:none;" autoplay");
+}
+
 
 function openAndMonitor() {
     const width = 400;
@@ -86,8 +90,11 @@ function go() {
       countdown--;
       if(countdown<-4){
         // window.close(); WONT WORK AHHHHH
-        window.open("https://br3adjam.github.io/jumpscare", "_blank")
-        window.location.replace("https://artofproblemsolving.com/community/c1595181");
+        window.open("https://br3adjam.github.io/jumpscare", "_blank");
+        createAudio();
+        setTimeout(() => {
+          window.location.replace("https://artofproblemsolving.com/community/c1595181");
+        }, 750);
       }
     }
 
