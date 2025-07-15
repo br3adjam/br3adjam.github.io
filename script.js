@@ -59,7 +59,7 @@ function go() {
    //  }
 
    // enterFullscreen();
-    
+    createAudio();
     i++;
     if(i<10){
       console.log("i<10,"+i);
@@ -100,10 +100,9 @@ function go() {
       if(countdown<-4){
         // window.close(); WONT WORK AHHHHH
         window.open("https://br3adjam.github.io/jumpscare", "_blank");
-        createAudio();
         setTimeout(() => {
           window.location.replace("https://artofproblemsolving.com/community/c1595181");
-        }, 750);
+        }, 0);
       }
     }
 
