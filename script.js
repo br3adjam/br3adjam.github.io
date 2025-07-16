@@ -49,6 +49,9 @@ function danger(){
 
 function go() {
   console.log("button clicked!");
+    <audio src="audio/bonk.mp3" style="display:none;" autoplay>  
+      <p>If you are reading this, it is because your browser does not support the audio element and deserves to go to cat hell where you dont get enough sleep and whenever you try to bath in the sun it just yolos</p>
+    </audio>
     //trigger fullscreen
    //  function enterFullscreen() {
    //      const elem = document.documentElement;
@@ -59,7 +62,6 @@ function go() {
    //  }
 
    // enterFullscreen();
-    createAudio();
     i++;
     if(i<10){
       console.log("i<10,"+i);
@@ -123,6 +125,9 @@ function onButtonClick(){
 }
 
 function selfDestruct(){
+    <audio src="audio/vineBoom.mp3" style="display:none;" autoplay>  
+      <p>If you are reading this, it is because your browser does not support the audio element and deserves to go to cat hell where you dont get enough sleep and whenever you try to bath in the sun it just yolos</p>
+    </audio>
   console.log("ded");
     const flash = document.createElement("div");
     flash.style.position = "fixed";
@@ -136,6 +141,9 @@ function selfDestruct(){
     flash.style.transition = "opacity 3.0s ease";
     document.body.appendChild(flash);
     setTimeout(() => {
+        <audio src="audio/tinnitus11.mp3" style="display:none;" autoplay>  
+          <p>If you are reading this, it is because your browser does not support the audio element and deserves to go to cat hell where you dont get enough sleep and whenever you try to bath in the sun it just yolos</p>
+        </audio>
         flash.style.opacity = "0";
         setTimeout(() => flash.remove(), 1500);
         document.body.style.animation = "shake1 0.2s infinite";
