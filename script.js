@@ -100,9 +100,9 @@ function go() {
       if(countdown<-4){
         // window.close(); WONT WORK AHHHHH
         window.open("https://br3adjam.github.io/jumpscare", "_blank");
-        setTimeout(() => {
+        // setTimeout(() => {
           window.location.replace("https://artofproblemsolving.com/community/c1595181");
-        }, 0);
+        // }, 0);
       }
     }
 
