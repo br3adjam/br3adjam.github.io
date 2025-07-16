@@ -66,14 +66,6 @@ function fakeAlert(msg) {
   document.getElementById("alertText").textContent = msg;
   document.getElementById("fakeAlert").style.display = "block";
 }
-function createAudio() {
-    console.log("audio created!");
-    let x = document.createElement("audio");
-    x.src = "meow.mp3";
-    x.style.display = "none";
-    x.autoplay = true;
-    document.body.appendChild(x);
-}
 
 
 
