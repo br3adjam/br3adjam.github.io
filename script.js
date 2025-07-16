@@ -1,6 +1,50 @@
 let newWindow2,a,b,c;
 let i = 0;
 let countdown=10;
+//animated favicon: https://www.faviconvideo.com/ 
+
+setTimeout(() => {
+  let favicon_video_image_counter = 0;
+  let favicon_video_icon_tag = document.querySelector("link[rel='icon']");
+  let favicon_video_images = [
+"https://favicongenerator.s3.amazonaws.com/2ccf413f60baa.png","https://favicongenerator.s3.amazonaws.com/cc4e7ba0f7851.png","https://favicongenerator.s3.amazonaws.com/47ffe14efd574.png","https://favicongenerator.s3.amazonaws.com/798583e468b98.png","https://favicongenerator.s3.amazonaws.com/4d47d8e67b4ad.png","https://favicongenerator.s3.amazonaws.com/d8a29fd8c1bd5.png","https://favicongenerator.s3.amazonaws.com/347fdb4335ad7.png","https://favicongenerator.s3.amazonaws.com/22457f9d309ac.png","https://favicongenerator.s3.amazonaws.com/9c486914e58db.png","https://favicongenerator.s3.amazonaws.com/2a3be5286d59.png","https://favicongenerator.s3.amazonaws.com/b122c20ea22a.png","https://favicongenerator.s3.amazonaws.com/fe1aaaca07809.png","https://favicongenerator.s3.amazonaws.com/163156b21233a.png","https://favicongenerator.s3.amazonaws.com/700fe13048d2b.png","https://favicongenerator.s3.amazonaws.com/505d686cc7d9d.png","https://favicongenerator.s3.amazonaws.com/f60c69acbde19.png","https://favicongenerator.s3.amazonaws.com/ec61769460488.png","https://favicongenerator.s3.amazonaws.com/863c2538a26e1.png","https://favicongenerator.s3.amazonaws.com/b188d9b7ab7e2.png","https://favicongenerator.s3.amazonaws.com/3f8caa10709ad.png","https://favicongenerator.s3.amazonaws.com/00dfb91db71b6.png","https://favicongenerator.s3.amazonaws.com/1d0a1244b23dc.png","https://favicongenerator.s3.amazonaws.com/dad3d98e0cf87.png","https://favicongenerator.s3.amazonaws.com/21bff5ccccbbb.png","https://favicongenerator.s3.amazonaws.com/3a4eb18245c0f.png","https://favicongenerator.s3.amazonaws.com/19234c05a40b7.png","https://favicongenerator.s3.amazonaws.com/f2942da3f3832.png","https://favicongenerator.s3.amazonaws.com/2afb458298a38.png","https://favicongenerator.s3.amazonaws.com/2f34fbeeb7ffe.png","https://favicongenerator.s3.amazonaws.com/e43eadc3e2228.png","https://favicongenerator.s3.amazonaws.com/af7d2cc8ee3eb.png","https://favicongenerator.s3.amazonaws.com/ea56ef422a978.png","https://favicongenerator.s3.amazonaws.com/daaaa13f02803.png","https://favicongenerator.s3.amazonaws.com/602844a1a8252.png"];
+  async function favicon_video_to_data_url(url, callback) {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      let reader = new FileReader();
+      reader.onloadend = function () {
+        callback(reader.result);
+      };
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open("GET", url);
+    xhr.responseType = "blob";
+    xhr.send();
+  }
+
+  let favicon_video_loaded_images = [];
+
+  favicon_video_images.map((url, idx) => {
+    favicon_video_to_data_url(url, function (dataUrl) {
+      favicon_video_loaded_images[idx] = dataUrl;
+    });
+  });
+
+  setInterval(function () {
+    if(favicon_video_loaded_images[favicon_video_image_counter]) {
+      favicon_video_icon_tag.href = favicon_video_loaded_images[
+        favicon_video_image_counter
+      ].replace("application/octet-stream", "image/png");
+    }
+    if (
+      favicon_video_image_counter ==
+      favicon_video_loaded_images.length - 1
+    )
+      favicon_video_image_counter = 0;
+    else favicon_video_image_counter++;
+  }, 100);
+}, 2000);
+
 
 function createAudio(src) {
   //USE RAW AUDIO FILE LINK
