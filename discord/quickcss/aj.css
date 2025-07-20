@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'SpaceAgeFont';
+    src: url('space_age.ttf') format('truetype');
+}
+.username_c19a55{
+    font-family: 'SpaceAgeFont', sans-serif;
+}
