@@ -16,7 +16,7 @@
 <body>
   <header>
     <label for="url">Load URL:</label>
-    <input id="url" type="url" placeholder="https://chess.com/" />
+    <input id="url" type="url" placeholder="https://example.com/page" />
     <button id="go">Load</button>
     <div class="log" id="status"></div>
   </header>
@@ -60,4 +60,147 @@ async function loadExternal(url, pushHistory = true) {
   // Rewrite resource URLs to absolute and inline CSS, scripts when possible
   const base = url;
 
-  // 1) i
+  // 1) inline CSS from <link rel="stylesheet">
+  const linkEls = Array.from(doc.querySelectorAll('link[rel="stylesheet"]'));
+  for (const link of linkEls) {
+    const href = makeAbsolute(base, link.getAttribute('href') || '');
+    try {
+      status('Fetching CSS: ' + href);
+      const cssText = await fetchText(href);
+      const style = doc.createElement('style');
+      style.textContent = cssText;
+      link.parentNode.replaceChild(style, link);
+    } catch (e) {
+      // If CSS fetch fails, keep the link (might still work)
+      console.warn('Failed to inline CSS', href, e);
+    }
+  }
+
+  // 2) convert img/src and a[href], form[action], script[src] to absolute
+  const ATTRS = [
+    ['img', 'src'],
+    ['script', 'src'],
+    ['a', 'href'],
+    ['link[href][rel!=stylesheet]', 'href'],
+    ['form', 'action'],
+    ['iframe', 'src']
+  ];
+  ATTRS.forEach(([sel, attr]) => {
+    Array.from(doc.querySelectorAll(sel)).forEach(el => {
+      const val = el.getAttribute(attr);
+      if (!val) return;
+      try { el.setAttribute(attr, makeAbsolute(base, val)); }
+      catch(e){}
+    });
+  });
+
+  // 3) Extract body content and import into our container
+  // We'll move the whole <body> innerHTML
+  let imported = doc.body ? doc.body.innerHTML : html;
+
+  // 4) Set a base tag in the container to make relative urls resolve (for <a>, <img>)
+  // But note: base tag only influences document not fragments; since we inject into our page,
+  // higher-level resolution isn't automatic — we already converted many to absolute.
+  const BASE_TAG = `<base href="${base}">`;
+  imported = BASE_TAG + imported;
+
+  // 5) inject the HTML fragment
+  container.innerHTML = imported;
+
+  // 6) Evaluate scripts: inline them safely by creating new <script> nodes (CSP permitting)
+  // Note: scripts already inline in HTML are present as elements and will not execute when
+  // inserted via innerHTML in many browsers. So we need to re-run them.
+  const scriptNodes = Array.from(container.querySelectorAll('script'));
+  for (const old of scriptNodes) {
+    const newScript = document.createElement('script');
+
+    // copy attributes except src will be handled separately
+    for (const attr of old.attributes) {
+      if (attr.name === 'src') continue;
+      newScript.setAttribute(attr.name, attr.value);
+    }
+
+    const src = old.getAttribute('src');
+    if (src) {
+      // fetch script text (CORS required)
+      try {
+        status('Fetching script: ' + src);
+        const js = await fetchText(src);
+        newScript.textContent = js;
+      } catch (e) {
+        console.warn('Failed to fetch script', src, e);
+        // try to set src instead (may fail due to CORS/CSP)
+        newScript.src = src;
+      }
+    } else {
+      newScript.textContent = old.textContent;
+    }
+
+    // replace old with new to force execution
+    old.parentNode.replaceChild(newScript, old);
+  }
+
+  // 7) Attach handlers to links/forms so navigation stays inside loader
+  // Intercept <a> clicks that point to the same origin as the original URL (or any absolute)
+  container.querySelectorAll('a[href]').forEach(a => {
+    a.addEventListener('click', ev => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+      // if it's a hash-only or javascript: let it proceed
+      if (href.startsWith('#') || href.startsWith('javascript:')) return;
+
+      ev.preventDefault();
+      const next = makeAbsolute(base, href);
+      // push state representing the logical URL (you can choose to mask or not)
+      if (pushHistory) history.pushState({remote: next}, '', '/proxy-' + encodeURIComponent(next));
+      loadExternal(next, true);
+    });
+  });
+
+  // Intercept forms: serialize and do a fetch
+  container.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      const method = (form.method || 'GET').toUpperCase();
+      const action = makeAbsolute(base, form.action || base);
+      const formData = new FormData(form);
+
+      if (method === 'GET') {
+        const params = new URLSearchParams(formData);
+        const urlWithParams = action.split('?')[0] + '?' + params.toString();
+        if (pushHistory) history.pushState({remote: urlWithParams}, '', '/proxy-' + encodeURIComponent(urlWithParams));
+        loadExternal(urlWithParams, true);
+      } else {
+        // POST: attempt fetch
+        try {
+          status('Submitting form...');
+          const res = await fetch(action, { method:'POST', body: formData, credentials:'omit' });
+          const text = await res.text();
+          container.innerHTML = text;
+          status('form result loaded');
+        } catch (e) {
+          container.innerHTML = `<pre style="color:red">Form submit failed: ${e}</pre>`;
+        }
+      }
+    });
+  });
+
+  status('done');
+}
+
+/* ----- UI wiring ----- */
+document.getElementById('go').addEventListener('click', () => {
+  const url = document.getElementById('url').value.trim();
+  if (!url) return alert('enter a URL');
+  loadExternal(url);
+});
+
+// handle back/forward toggles for our pseudo-history
+window.addEventListener('popstate', (ev) => {
+  if (ev.state && ev.state.remote) {
+    loadExternal(ev.state.remote, false);
+  }
+});
+</script>
+</body>
+</html>
