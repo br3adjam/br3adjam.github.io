@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html>
-  <script>
-  </script>
-  <head>
-    
-  </head>
-  <body>
-    <iframe src="https://chess.com/" style="width:100%; height:100vh; border:0;"></iframe>
-  </body>
-</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Client-side loader</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { margin:0; font-family: system-ui, Arial; }
+    header { background:#111; color:#fff; padding:8px 12px; display:flex; gap:8px; align-items:center; }
+    input[type="url"]{ width:50ch; padding:6px; }
+    button{ padding:6px 10px; }
+    #frame { padding:12px; min-height:80vh; background:#fff; }
+    .log { color:#666; font-size:13px; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <label for="url">Load URL:</label>
+    <input id="url" type="url" placeholder="https://chess.com/" />
+    <button id="go">Load</button>
+    <div class="log" id="status"></div>
+  </header>
+
+  <main id="frame" aria-live="polite">No page loaded.</main>
+
+<script>
+/* ----- Utilities ----- */
+function status(msg) { document.getElementById('status').textContent = msg; }
+
+function makeAbsolute(base, url) {
+  try { return new URL(url, base).href; }
+  catch(e){ return url; }
+}
+
+async function fetchText(url) {
+  const res = await fetch(url, { credentials: 'omit' });
+  if (!res.ok) throw new Error('Fetch failed: ' + res.status + ' ' + url);
+  return await res.text();
+}
+
+/* ----- Core loader ----- */
+async function loadExternal(url, pushHistory = true) {
+  status('Fetching HTML...');
+  const container = document.getElementById('frame');
+  container.innerHTML = '<p>Loading…</p>';
+
+  let html;
+  try {
+    html = await fetchText(url);
+  } catch (err) {
+    container.innerHTML = `<pre style="color:red">Error fetching HTML:\n${err}</pre>`;
+    status('failed');
+    return;
+  }
+
+  status('Parsing HTML');
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  // Rewrite resource URLs to absolute and inline CSS, scripts when possible
+  const base = url;
+
+  // 1) i
