@@ -1,42 +1,135 @@
 <!DOCTYPE html>
 <html>
+      <!-- chatgpt 4o mini or wtv model was used to help find how to make clip-path work -->
   <head>
-    <link rel="stylesheet" href="style.css">
-  </head>  
+
+    <!-- lol no more stylesheet -->
+    <style>
+      :root {
+        --light-bg: #fff;
+        --dark-bg: #000;
+        --transition-duration: 1s;
+      }
+      
+      html, body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      
+      .theme-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        color: #000;
+        background: var(--light-bg);
+        transition: color var(--transition-duration);
+      }
+      
+      /* bg images */
+      .bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity var(--transition-duration) ease;
+      }
+      
+      .bg-dark { opacity: 0; }
+      .theme-container.dark .bg-dark { opacity: 1; }
+      .theme-container.dark .bg-light { opacity: 0; }
+      
+      /* overlay for dark */
+      .reveal {
+        position: absolute;
+        inset: 0;
+        background: var(--dark-bg);
+        clip-path: circle(0 at center);
+        transition: clip-path var(--transition-duration) ease-out;
+        z-index: 2;
+        pointer-events: none;
+      }
+      
+      /* dark reveal */
+      .reveal img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* baton */
+      #toggle {
+        position: absolute;
+        z-index: 3;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
   <body>
     <div class="theme-container light">
-      <img src="light-bg.jpg" class="bg bg-light" alt="">
-      <img src="dark-bg.jpg" class="bg bg-dark" alt="">
+      <img src="light-bg.jpg" class="bg bg-light" alt="light bg">
+      <img src="dark-bg.jpg" class="bg bg-dark" alt="dark bg">
+      <div class="reveal">
+        <img src="dark-bg.jpg" alt="">
+      </div>
       <button id="toggle">Toggle Theme</button>
-      <div class="ripple"></div>
     </div>
-
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const container = document.querySelector('.theme-container');
-        const toggle = document.getElementById('toggle');
-        const ripple = document.querySelector('.ripple');
-        
-        toggle.addEventListener('click', e => {
-          const rect = container.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          const rippleSize = Math.max(rect.width, rect.height) * 2;
-          ripple.style.width = ripple.style.height = `${rippleSize}px`;
-          ripple.style.left = `${x - rippleSize / 2}px`;
-          ripple.style.top = `${y - rippleSize / 2}px`;
-
-          ripple.classList.remove('animate');
-          void ripple.offsetWidth;
-          ripple.classList.add('animate');
-          
+  
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.theme-container');
+      const toggle = document.getElementById('toggle');
+      const reveal = document.querySelector('.reveal');
+    
+      let darkMode = false;
+    
+      toggle.addEventListener('click', e => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+    
+        // move ripple
+        const maxDim = Math.max(rect.width, rect.height);
+        const finalRadius = Math.hypot(rect.width, rect.height);
+    
+        if (!darkMode) {
+          // light to dark
+          reveal.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+          reveal.style.background = 'var(--dark-bg)';
+          reveal.querySelector('img').src = 'dark-bg.jpg';
+    
+          requestAnimationFrame(() => {
+            reveal.style.transition = `clip-path var(--transition-duration) ease-out`;
+            reveal.style.clipPath = `circle(${finalRadius}px at ${x}px ${y}px)`;
+          });
+    
           setTimeout(() => {
-            container.classList.toggle('dark');
-            container.classList.toggle('light');
-          }, 150);
-        });
+            container.classList.add('dark');
+            darkMode = true;
+          }, 1000);
+        } else {
+          // opposite
+          reveal.style.clipPath = `circle(${finalRadius}px at ${x}px ${y}px)`;
+          reveal.style.background = 'var(--light-bg)';
+          reveal.querySelector('img').src = 'light-bg.jpg';
+    
+          requestAnimationFrame(() => {
+            reveal.style.transition = `clip-path var(--transition-duration) ease-out`;
+            reveal.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+          });
+    
+          setTimeout(() => {
+            container.classList.remove('dark');
+            darkMode = false;
+          }, 1000); 
+        }
       });
-    </script>
+    });
+  </script>
   </body>
 </html>
