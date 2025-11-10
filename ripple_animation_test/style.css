@@ -28,8 +28,7 @@ body, html {
 /* bg images */
 .bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -42,16 +41,16 @@ body, html {
 .theme-container.dark .bg-light { opacity: 0; }
 .theme-container.dark .bg-dark { opacity: 1; }
 
-/* Toggle button */
+/* baton */
 #toggle {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 2;
+  z-index: 3;
   padding: 10px 20px;
 }
 
-/* main effect lol */
+/* rippleeeeeeeee */
 .ripple {
   position: absolute;
   border-radius: 50%;
@@ -59,7 +58,7 @@ body, html {
   pointer-events: none;
   transform: scale(0);
   opacity: 0.8;
-  z-index: 1;
+  z-index: 2;
 }
 
 .theme-container.dark .ripple {
@@ -72,7 +71,7 @@ body, html {
 
 @keyframes rippleExpand {
   to {
-    transform: scale(50);
+    transform: scale(1);
     opacity: 0;
   }
 }
