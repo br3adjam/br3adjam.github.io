@@ -1,0 +1,78 @@
+:root {
+  --light-bg: #fff;
+  --dark-bg: #000;
+  --transition-duration: 1s;
+}
+
+body, html {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.theme-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--light-bg);
+  color: #000;
+  transition: background var(--transition-duration), color var(--transition-duration);
+  overflow: hidden;
+}
+
+.theme-container.dark {
+  background: var(--dark-bg);
+  color: #fff;
+}
+
+/* bg images */
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease;
+  z-index: 0;
+}
+
+.bg-light { opacity: 1; }
+.theme-container.dark .bg-light { opacity: 0; }
+.theme-container.dark .bg-dark { opacity: 1; }
+
+/* Toggle button */
+#toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  padding: 10px 20px;
+}
+
+/* main effect lol */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--dark-bg);
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.theme-container.dark .ripple {
+  background: var(--light-bg);
+}
+
+.ripple.animate {
+  animation: rippleExpand var(--transition-duration) ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  to {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
