@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+    const container = document.querySelector('.theme-container');
+    const toggle = document.getElementById('toggle');
+    const ripple = document.querySelector('.ripple');
+    
+    toggle.addEventListener('click', e => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+    
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      ripple.classList.remove('animate');
+      void ripple.offsetWidth; //reset animation
+      ripple.classList.add('animate');
+    
+      setTimeout(() => {
+        container.classList.toggle('dark');
+        container.classList.toggle('light');
+      }, 100); //start change slightly after ripple begins
+    });
+    </script>
+    <link rel="stylesheet" href="style.css">
+  </head>  
+  <body>
+    
+  </body>
+</html>
