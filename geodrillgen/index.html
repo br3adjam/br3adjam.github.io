@@ -255,19 +255,7 @@
       <h1>Trig Drill Generator</h1>
       <h2>Options</h2>
       <div class="options">
-        <p><input type="checkbox" id="degrees"> <label for="degrees">Degrees?</label></p>
-        <p><input type="checkbox" id="radian" checked> <label for="radian">Radians?</label></p>
-        <!--<p><input type="checkbox" id="tan"> <label for="tan">Include tan problems?</label></p>-->
-        <p><input type="checkbox" id="deg90s" checked> <label for="deg90s">Include 90&deg;-type angles?</label></p>
-        <p><input type="checkbox" id="deg30s" checked> <label for="deg30s">Include 30&deg;- and 60&deg;-type angles?</label></p>
-        <p><input type="checkbox" id="deg45s" checked> <label for="deg45s">Include 45&deg;-type angles?</label></p>
-        <p><input type="checkbox" id="include360" checked> <label for="include360">Include 360&deg;?</label></p>
-        <p><input type="checkbox" id="coterminal"> <label for="coterminal">Include coterminal angles?</label></p>
-        <p><input type="checkbox" id="quadionly"> <label for="quadionly">Limit to quadrant I angles?</label></p>
-        <p><input type="checkbox" id="showcorrectness" checked> <label for="showcorrectness">Show wrong answers?</label></p>
-        <p><input type="checkbox" id="showcorrect" checked> <label for="showcorrect">Show correct answers?</label></p>
-        <p><input type="checkbox" id="showtime" checked> <label for="showtime">Show time?</label></p>
-        <p><input type="checkbox" id="limit20"> <label for="limit20">Limit to twenty problems?</label></p>
+        <p><input type="checkbox" id="test"> <label for="test">test lmfao</label></p>
       </div>
       <button id="start">Start</button>
     </div>
@@ -277,7 +265,6 @@
     </div>
     <div class="problems" id="problems"></div>
     <div class="solutions" id="solutions">
-      <!--<div class="solution" data-key="3, 4" data-answer="null"><span class="small">undefined</span></div>-->
       <div class="solution" data-key="f" data-answer="mp"><span>mp</span></div>
       <div class="solution" data-key="j" data-answer="mp"><span>mt</span></div>
       <div class="solution" data-key="d" data-answer="mp"><span>ca</span></div>
@@ -296,126 +283,17 @@
     <div class="clock" id="clock">3:00</div>
     <script>
 function generateDrill({
-  useDegrees = true,
-  radians = false,
-  tan: includeTan = false,
-  deg90s = true,
-  deg30s = true,
-  deg45s = true,
-  include360 = true,
-  coterminal = false,
-  quadIOnly = false
+  test = true,
 } = {}) {
   const answers = {
-    0: [0, 1, 0],
-    30: ['1/2', 'rt3/2', 'rt3/3'],
-    45: ['rt2/2', 'rt2/2', 1],
-    60: ['rt3/2', '1/2', 'rt3'],
-    90: [1, 0, null]
+    0: [0, 0, 0],
   };
   function getAnswers(degrees) {
-    degrees = (degrees % 360 + 360) % 360;
-    if (answers[degrees]) return answers[degrees].slice(); // QUADRANT I
-    if (degrees === 180) {
-      const t = answers[0].slice();
-      t[1] = -1;
-      return t;
-    }
-    if (degrees === 270) {
-      const t = answers[90].slice();
-      t[0] = -1;
-      return t;
-    }
-    // QUADRANT II
-    if (degrees > 90 && degrees < 180) {
-      const t = answers[180 - degrees].slice();
-      if (typeof t[1] === 'string') t[1] = '-' +t[1];
-      else if (typeof t[1] === 'number') t[1] *= -1;
-      if (typeof t[2] === 'string') t[2] = '-' +t[2];
-      else if (typeof t[2] === 'number') t[2] *= -1;
-      return t;
-    }
-    // QUADRANT III
-    if (degrees > 180 && degrees < 270) {
-      const t = answers[degrees - 180].slice();
-      if (typeof t[0] === 'string') t[0] = '-' +t[0];
-      else if (typeof t[0] === 'number') t[0] *= -1;
-      if (typeof t[1] === 'string') t[1] = '-' +t[1];
-      else if (typeof t[1] === 'number') t[1] *= -1;
-      return t;
-    }
-    // QUADRANT IV
-    if (degrees > 270 && degrees < 360) {
-      const t = answers[360 - degrees].slice();
-      if (typeof t[0] === 'string') t[0] = '-' +t[0];
-      else if (typeof t[0] === 'number') t[0] *= -1;
-      if (typeof t[2] === 'string') t[2] = '-' +t[2];
-      else if (typeof t[2] === 'number') t[2] *= -1;
-      return t;
-    }
+    return answers[0].slice();
+    if(1==0) { return t; }
     throw new Error('wut: ' + degrees);
   }
   const problems = [];
-  const radiansMap = {
-     0: [0, 1],  30: [1, 6],  45: [1, 4],  60: [1, 3],
-    90: [1, 2], 120: [2, 3], 135: [3, 4], 150: [5, 6]
-  };
-  function toRadians(degrees) {
-    if (degrees === 0) return 0;
-    const base = (degrees % 180 + 180) % 180;
-    const diff = (degrees - base) / 180;
-    let [numer, denom] = radiansMap[base];
-    numer += denom * diff;
-    return [numer, denom];
-  }
-  function angle(degrees, getCoterminals = true) {
-    const [sin, cos, tan] = getAnswers(degrees);
-    if (getCoterminals && coterminal) {
-      if (degrees !== 360) angle(degrees - 360, false);
-      angle(degrees + 360, false);
-    }
-    if (useDegrees) {
-      problems.push({fn: 'sin', arg: degrees, type: 'degrees', answer: sin});
-      problems.push({fn: 'cos', arg: degrees, type: 'degrees', answer: cos});
-      if (includeTan) problems.push({fn: 'tan', arg: degrees, type: 'degrees', answer: tan});
-    }
-    if (radians) {
-      problems.push({fn: 'sin', arg: toRadians(degrees), type: 'radians', answer: sin});
-      problems.push({fn: 'cos', arg: toRadians(degrees), type: 'radians', answer: cos});
-      if (includeTan) problems.push({fn: 'tan', arg: toRadians(degrees), type: 'radians', answer: tan});
-    }
-  }
-  if (deg90s) {
-    angle(0);
-    angle(90);
-    if (!quadIOnly) {
-      angle(180);
-      angle(270);
-    }
-  }
-  if (include360) angle(360);
-  if (deg30s) {
-    angle(30);
-    angle(60);
-    if (!quadIOnly) {
-      angle(120);
-      angle(150);
-      angle(210);
-      angle(240);
-      angle(300);
-      angle(330);
-    }
-  }
-  if (deg45s) {
-    angle(45);
-    if (!quadIOnly) {
-      angle(135);
-      angle(225);
-      angle(315);
-    }
-  }
-  return problems;
-}
 function shuffle(arr) {
   for (let i = 0; i < arr.length; i++) {
     const index = Math.floor(Math.random() * (arr.length - i)) + i;
