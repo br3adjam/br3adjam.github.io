@@ -3,15 +3,15 @@
   <head>
     <script>
       function displayKeycode(keyCode) {
-        document.getElementById('keyDisplay') = keyCode;
+        document.getElementById(“display”).innerHTML = keycode;
       }
-      
+
       document.addEventListener('keydown', e => {
         displayKeycode(e.keyCode);
       });
     </script>
   </head>
   <body>
-    <p id="keyDisplay">enter a key to display it lmao</p>
+    <p id="display">enter a key to display it lmao</p>
   </body>
 </html>
