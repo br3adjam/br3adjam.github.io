@@ -10,8 +10,15 @@
         elem.innterHTML.textContent = code;
       }
 
-      document.addEventListener('keydown', e => {
-        displayKeycode(e.code);
+      function modifyText(newText) {
+        const t2 = document.getElementById("display");
+        t2.firstChild.nodeValue = newText;
+      }
+      
+      // thank you mdn
+      const el = document.getElementById("outside");
+      el.addEventListener("keydown", e => {
+        modifyText(e.code);
       });
     </script>
   </head>
