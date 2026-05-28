@@ -2,8 +2,12 @@
 <html>
   <head>
     <script>
+      let code = '';
+      
       function displayKeycode(keyCode) {
+        code = keyCode;
         document.getElementById(“display”).innerHTML = keycode;
+        document.getElementById(“displayVar”).innerHTML = code;
       }
 
       document.addEventListener('keydown', e => {
@@ -13,5 +17,7 @@
   </head>
   <body>
     <p id="display">enter a key to display it lmao</p>
+    <p id="displayVar">enter a key to display it lmao but var</p>
+
   </body>
 </html>
