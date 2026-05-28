@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>
-      let code = '';
-      
+    <script>      
       function displayKeycode(keyCode) {
-        code = keyCode;
-        document.getElementById(“display”).innerHTML = keycode;
-        document.getElementById(“displayVar”).innerHTML = code;
+        const elem = document.getElementById("display");
+        elem.innerHTML.textContent = keyCode;
+        
+        const code = "alert('lulz');";
+        elem.innterHTML.textContent = code;
       }
 
       document.addEventListener('keydown', e => {
@@ -16,8 +16,7 @@
     </script>
   </head>
   <body>
-    <p id="display">enter a key to display it lmao</p>
-    <p id="displayVar">enter a key to display it lmao but var</p>
+    <p id="display">keydown for keycode</p>
 
   </body>
 </html>
