@@ -265,19 +265,19 @@
     </div>
     <div class="problems" id="problems"></div>
     <div class="solutions" id="solutions">
-      <div class="solution" data-key="f" data-answer="mp"><span>mp</span></div>
-      <div class="solution" data-key="j" data-answer="mp"><span>mt</span></div>
-      <div class="solution" data-key="d" data-answer="mp"><span>ca</span></div>
-      <div class="solution" data-key="k" data-answer="mp"><span>ce</span></div>
-      <div class="solution" data-key="space" data-answer="mp"><span>da</span></div>
-      <div class="solution" data-key="s" data-answer="mp"><span>ds</span></div>
-      <div class="solution" data-key="l" data-answer="mp"><span>hs</span></div>
-      <div class="solution" data-key="a" data-answer="mp"><span>cd</span></div>
-      <div class="solution" data-key=";" data-answer="mp"><span>dn</span></div>
-      <div class="solution" data-key="e" data-answer="mp"><span>comm</span></div>
-      <div class="solution" data-key="r" data-answer="mp"><span>equiv</span></div>
-      <div class="solution" data-key="u" data-answer="mp"><span>dm</span></div>
-      <div class="solution" data-key="i" data-answer="mp"><span>taut</span></div>
+      <div class="solution" data-key="f" data-answer="mp"><span>mp</span></div> // 70
+      <div class="solution" data-key="j" data-answer="mt"><span>mt</span></div> // 74
+      <div class="solution" data-key="d" data-answer="ca"><span>ca</span></div> // 68
+      <div class="solution" data-key="k" data-answer="ce"><span>ce</span></div> // 75
+      <div class="solution" data-key="space" data-answer="da"><span>da</span></div> // 32
+      <div class="solution" data-key="s" data-answer="ds"><span>ds</span></div> // 83
+      <div class="solution" data-key="l" data-answer="hs"><span>hs</span></div> // 76
+      <div class="solution" data-key="a" data-answer="cd"><span>cd</span></div // 65
+      <div class="solution" data-key=";" data-answer="dn"><span>dn</span></div> // 186
+      <div class="solution" data-key="e" data-answer="comm"><span>comm</span></div> // 69
+      <div class="solution" data-key="r" data-answer="equiv"><span>equiv</span></div> // 82
+      <div class="solution" data-key="u" data-answer="dm"><span>dm</span></div> // 85
+      <div class="solution" data-key="i" data-answer="taut"><span>taut</span></div> // 73
 
     </div>
     <div class="clock" id="clock">3:00</div>
@@ -302,19 +302,7 @@ function shuffle(arr) {
   return arr;
 }
 const checkboxes = {
-  useDegrees: document.getElementById('degrees'),
-  radians: document.getElementById('radian'),
-  // tan: document.getElementById('tan'),
-  deg90s: document.getElementById('deg90s'),
-  deg30s: document.getElementById('deg30s'),
-  deg45s: document.getElementById('deg45s'),
-  include360: document.getElementById('include360'),
-  coterminal: document.getElementById('coterminal'),
-  quadIOnly: document.getElementById('quadionly'),
-  showCorrectness: document.getElementById('showcorrectness'),
-  showCorrect: document.getElementById('showcorrect'),
-  showTime: document.getElementById('showtime'),
-  limit20: document.getElementById('limit20')
+  useDegrees: document.getElementById('test'),
 };
 const clock = document.getElementById('clock');
 const problemsWrapper = document.getElementById('problems');
@@ -366,11 +354,25 @@ document.getElementById('start').addEventListener('click', e => {
   playing = true;
 });
 const keyCodeToAnswer = {
-  // 49: 0, 50: 0, 51: null, 52: null,
-  81: '1/2', 87: 'rt2/2', 69: 'rt3/2', 82: '1',
-  65: '-1/2', 83: '-rt2/2', 68: '-rt3/2', 70: '-1',
-  32: '0'
+  70: 'mp', 74: 'mt', 68: 'ca', 75: 'ce', // f j d k
+  83: 'ds', 76: 'hs', 65: 'cd', 186: 'dn', // s l a ;
+  69: 'comm', 82: 'equiv', 85: 'dm', 73: 'taut', // e r u i
+  32: 'da' // space
 };
+        <div class="solution" data-key="f" data-answer="mp"><span>mp</span></div> // 70
+      <div class="solution" data-key="j" data-answer="mt"><span>mt</span></div> // 74
+      <div class="solution" data-key="d" data-answer="ca"><span>ca</span></div> // 68
+      <div class="solution" data-key="k" data-answer="ce"><span>ce</span></div> // 75
+      <div class="solution" data-key="space" data-answer="da"><span>da</span></div> // 32
+      <div class="solution" data-key="s" data-answer="ds"><span>ds</span></div> // 83
+      <div class="solution" data-key="l" data-answer="hs"><span>hs</span></div> // 76
+      <div class="solution" data-key="a" data-answer="cd"><span>cd</span></div // 65
+      <div class="solution" data-key=";" data-answer="dn"><span>dn</span></div> // 186
+      <div class="solution" data-key="e" data-answer="comm"><span>comm</span></div> // 69
+      <div class="solution" data-key="r" data-answer="equiv"><span>equiv</span></div> // 82
+      <div class="solution" data-key="u" data-answer="dm"><span>dm</span></div> // 85
+      <div class="solution" data-key="i" data-answer="taut"><span>taut</span></div> // 73
+          
 document.addEventListener('keydown', e => {
   if (keyCodeToAnswer[e.keyCode]) submitAnswer(keyCodeToAnswer[e.keyCode]);
 });
