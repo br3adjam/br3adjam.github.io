@@ -192,6 +192,7 @@ async function loadExternal(url, pushHistory = true) {
 document.getElementById('go').addEventListener('click', () => {
   const url = document.getElementById('url').value.trim();
   if (!url) return alert('enter a URL');
+  window.location = url;
   loadExternal(url);
 });
 
